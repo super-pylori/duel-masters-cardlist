@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/duel-masters-cardlist/static/css/main.355780ae.css",
-    "main.js": "/duel-masters-cardlist/static/js/main.88b3bf21.js",
+    "main.css": "/duel-masters-cardlist/static/css/main.c3209bd7.css",
+    "main.js": "/duel-masters-cardlist/static/js/main.71b408de.js",
     "static/js/787.c48fa118.chunk.js": "/duel-masters-cardlist/static/js/787.c48fa118.chunk.js",
     "static/media/logo.svg": "/duel-masters-cardlist/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/duel-masters-cardlist/index.html",
-    "main.355780ae.css.map": "/duel-masters-cardlist/static/css/main.355780ae.css.map",
-    "main.88b3bf21.js.map": "/duel-masters-cardlist/static/js/main.88b3bf21.js.map",
+    "main.c3209bd7.css.map": "/duel-masters-cardlist/static/css/main.c3209bd7.css.map",
+    "main.71b408de.js.map": "/duel-masters-cardlist/static/js/main.71b408de.js.map",
     "787.c48fa118.chunk.js.map": "/duel-masters-cardlist/static/js/787.c48fa118.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.355780ae.css",
-    "static/js/main.88b3bf21.js"
+    "static/css/main.c3209bd7.css",
+    "static/js/main.71b408de.js"
   ]
 }
