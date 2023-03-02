@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 50vmin;
   pointer-events: none;
   display: flex;
 }
@@ -28,4 +28,13 @@
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
+}
+
+.photo-list-img {
+  width: 50vmin;
+  pointer-events: none;
+}
+
+li {
+  flex-basis: 33.3%;
 }
