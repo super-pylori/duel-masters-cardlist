@@ -35,6 +35,13 @@
   pointer-events: none;
 }
 
+@media (max-width: 600px) {
+  .photo-list-img {
+    width: 50%;
+    pointer-events: none;
+  }
+}
+
 li {
   flex-basis: 33.3%;
 }
