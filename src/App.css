@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 50vmin;
+  height: 40vmin;
   pointer-events: none;
   display: flex;
 }
@@ -31,7 +31,7 @@
 }
 
 .photo-list-img {
-  width: 50vmin;
+  width: 30vmin;
   pointer-events: none;
 }
 
