@@ -1,44 +1,118 @@
+import * as React from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import  dm01 from './dm01'
+import  dm02 from './dm02'
+import  dm03 from './dm03'
+import  dmc01 from './dmc01'
+import  dmc02 from './dmc02'
 
-const urls = [
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-s03.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-s04.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-003.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-004.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-017.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-018.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-019.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-020.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-021.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-022.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-047.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-048.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-049.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-050.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-051.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-052.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-079.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-080.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-081.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-082.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-083.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-084.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-085.jpg",
-  "https://dm.takaratomy.co.jp/wp-content/card/cardimage/dm01-086.jpg",
-];
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 function App() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <div className="photo-list">
-          {urls.map((url) => {
-            return (
-                <img src={url} className="photo-list-img"/>
-            );
-          })}
-        </div>
+        <Box sx={{ width: '100%' }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs 
+              value={value} 
+              onChange={handleChange}
+              aria-label="basic tabs example"
+              textColor="main"
+              centered
+            >
+              <Tab label="DM-01" {...a11yProps(0)} />
+              <Tab label="DM-02" {...a11yProps(1)} />
+              <Tab label="DM-03" {...a11yProps(2)} />
+              <Tab label="DMC-01" {...a11yProps(3)} />
+              <Tab label="DMC-02" {...a11yProps(4)} />
+            </Tabs>
+          </Box>
+          <div className="photo-list">
+            <TabPanel value={value} index={0}>
+              {dm01.map((url) => {
+                return (
+                    <img src={url} className="photo-list-img"/>
+                );
+              })}
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              {dm02.map((url) => {
+                  return (
+                      <img src={url} className="photo-list-img"/>
+                  );
+              })}
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              {dm03.map((url) => {
+                    return (
+                        <img src={url} className="photo-list-img"/>
+                    );
+              })}
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+              {dmc01.map((url) => {
+                    return (
+                        <img src={url} className="photo-list-img"/>
+                    );
+              })}
+            </TabPanel>
+            <TabPanel value={value} index={4}>
+              {dmc02.map((url) => {
+                    return (
+                        <img src={url} className="photo-list-img"/>
+                    );
+              })}
+            </TabPanel>
+          </div>
+        </Box>
       </header>
     </div>
   );
