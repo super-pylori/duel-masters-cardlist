@@ -59,15 +59,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+      <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs 
             value={value} 
             onChange={handleChange}
             variant="scrollable"
             scrollButtons="auto"
-            aria-label="basic tabs example"
             textColor="main"
-            centered
           >
             <Tab label="DM-01" {...a11yProps(0)} />
             <Tab label="DM-02" {...a11yProps(1)} />
@@ -76,51 +75,52 @@ function App() {
             <Tab label="DMC-02" {...a11yProps(4)} />
           </Tabs>
         </Box>
-          <TabPanel value={value} index={0}>
-            <div className="photo-list">
-              {dm01.map((url) => {
-                return (
-                  <img src={url} className="photo-list-img"/>
-                );
-              })}
-            </div>
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <div className="photo-list">
-              {dm02.map((url) => {
-                return (
-                  <img src={url} className="photo-list-img"/>
-                );
-              })}
-            </div>
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            <div className="photo-list">
-              {dm03.map((url) => {
-                    return (
-                      <img src={url} className="photo-list-img"/>
-                    );
-              })}
-            </div>
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-            <div className="photo-list">
-              {dmc01.map((url) => {
-                    return (
-                      <img src={url} className="photo-list-img"/>
-                    );
-              })}
-            </div>
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-            <div className="photo-list">
-              {dmc02.map((url) => {
+        <TabPanel value={value} index={0}>
+          <div className="photo-list">
+            {dm01.map((url) => {
+              return (
+                <img src={url} className="photo-list-img"/>
+              );
+            })}
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <div className="photo-list">
+            {dm02.map((url) => {
+              return (
+                <img src={url} className="photo-list-img"/>
+              );
+            })}
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <div className="photo-list">
+            {dm03.map((url) => {
                   return (
                     <img src={url} className="photo-list-img"/>
                   );
-              })}
-            </div>
-          </TabPanel>
+            })}
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          <div className="photo-list">
+            {dmc01.map((url) => {
+                  return (
+                    <img src={url} className="photo-list-img"/>
+                  );
+            })}
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          <div className="photo-list">
+            {dmc02.map((url) => {
+                return (
+                  <img src={url} className="photo-list-img"/>
+                );
+            })}
+          </div>
+        </TabPanel>
+      </Box>
       </header>
     </div>
   );
