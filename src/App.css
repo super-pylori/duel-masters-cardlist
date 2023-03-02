@@ -10,7 +10,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +26,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  list-style: none;
+  gap: 0px;
 }
 
 .photo-list-img {
@@ -44,4 +43,9 @@
 
 li {
   flex-basis: 33.3%;
+}
+
+* {
+  margin:0;
+  padding:0;
 }
