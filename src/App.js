@@ -10,11 +10,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import  dm01 from './dm01'
-import  dm02 from './dm02'
-import  dm03 from './dm03'
-import  dmc01 from './dmc01'
-import  dmc02 from './dmc02'
+import Data from './assets/data.json';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,77 +46,61 @@ function a11yProps(index) {
 }
 
 function App() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0)
+  const [value2, setValue2] = React.useState(0)
+  const cardlist = Data.data
+
+  const packids = Array.from(new Set(cardlist.map((obj) => obj.packid)))
+  const civs = Array.from(new Set(cardlist.map((obj) => obj.civ)))
+  console.log(civs)
+
+  const getUrls = (packid) => {
+    return cardlist.filter((item, index) => {
+      if (item.packid == packid ) return true;
+    }).map((obj) => obj.cardimgurl);
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const handleChange2 = (event, newValue2) => {
+    setValue2(newValue2);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-      <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs 
-            value={value} 
-            onChange={handleChange}
-            variant="scrollable"
-            scrollButtons="auto"
-            textColor="main"
-          >
-            <Tab label="DM-01" {...a11yProps(0)} />
-            <Tab label="DM-02" {...a11yProps(1)} />
-            <Tab label="DM-03" {...a11yProps(2)} />
-            <Tab label="DMC-01" {...a11yProps(3)} />
-            <Tab label="DMC-02" {...a11yProps(4)} />
-          </Tabs>
-        </Box>
-        <TabPanel value={value} index={0}>
-          <div className="photo-list">
-            {dm01.map((url) => {
-              return (
-                <img src={url} className="photo-list-img"/>
-              );
-            })}
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <div className="photo-list">
-            {dm02.map((url) => {
-              return (
-                <img src={url} className="photo-list-img"/>
-              );
-            })}
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <div className="photo-list">
-            {dm03.map((url) => {
-                  return (
-                    <img src={url} className="photo-list-img"/>
-                  );
-            })}
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          <div className="photo-list">
-            {dmc01.map((url) => {
-                  return (
-                    <img src={url} className="photo-list-img"/>
-                  );
-            })}
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={4}>
-          <div className="photo-list">
-            {dmc02.map((url) => {
+        <Box sx={{ width: '100%' }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs 
+              value={value} 
+              onChange={handleChange}
+              variant="scrollable"
+              scrollButtons="auto"
+              textColor="main"
+            >
+              {packids.map((packid, index) => {
                 return (
-                  <img src={url} className="photo-list-img"/>
+                  <Tab label={packid} {...a11yProps(index)} />
                 );
-            })}
-          </div>
-        </TabPanel>
-      </Box>
+              })}
+            </Tabs>
+          </Box>
+          {packids.map((packid, index) => {
+            return (
+              <TabPanel value={value} index={index}>
+                <div className="photo-list">
+                  {getUrls(packid).map((url) => {
+                    return (
+                      <img src={url} className="photo-list-img"/>
+                    );
+                  })}
+                </div>
+              </TabPanel>
+            );
+          })}
+        </Box>
       </header>
     </div>
   );
